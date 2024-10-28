@@ -1,0 +1,23 @@
+# config.yaml
+general:
+  device: auto
+
+paths:
+  root_dir: "../data/original"
+  train_dir: "train"
+  val_dir: "val"
+
+training:
+  learning_rate: 0.0002
+  batch_size: 16
+  num_epochs: 2
+  image_size: 256
+  channels_img: 3
+  num_worker: 2
+
+model:
+  l1_lambda: 100
+  save_model: true
+  load_model: false
+  checkpoint_disc: "disc.pth.tar"
+  checkpoint_gen: "gen.pth.tar"
