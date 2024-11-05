@@ -8,4 +8,4 @@ class TrainingConfig(BaseModel):
     image_size: int
     channels_img: int
     num_worker: int
-    device: str = Field(default="cpu")
+    device: str = Field(default="cuda")

@@ -1,5 +1,4 @@
 import torch.nn as nn
-import torch
 
 
 class CNNBlock(nn.Module):
@@ -15,7 +14,7 @@ class CNNBlock(nn.Module):
                 bias=False,
                 padding_mode="reflect",
             ),
-            nn.BatchNorm2d(num_features=out_channels),
+            nn.InstanceNorm2d(out_channels, affine=True),
             nn.LeakyReLU(0.2)
         )
 

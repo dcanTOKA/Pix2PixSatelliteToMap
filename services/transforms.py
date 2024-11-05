@@ -10,17 +10,9 @@ class TransformService:
         ])
 
     @staticmethod
-    def input_transform():
+    def common_transform():
         return Compose([
             HorizontalFlip(p=0.3),
-            ColorJitter(p=0.2),
             Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], max_pixel_value=255),
             ToTensorV2()
-        ])
-
-    @staticmethod
-    def target_transform():
-        return Compose([
-            Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], max_pixel_value=255),
-            ToTensorV2()
-        ])
+        ], additional_targets={'mask': 'image'})

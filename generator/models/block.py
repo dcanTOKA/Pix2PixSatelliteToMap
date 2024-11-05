@@ -30,7 +30,7 @@ class Block(nn.Module):
                     bias=False,
                 )
             ),
-            nn.BatchNorm2d(out_channels),
+            nn.InstanceNorm2d(out_channels, affine=True),
             self.activation,
         )
 

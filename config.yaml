@@ -10,7 +10,7 @@ paths:
 training:
   learning_rate: 0.0002
   batch_size: 16
-  num_epochs: 2
+  num_epochs: 200
   image_size: 256
   channels_img: 3
   num_worker: 2

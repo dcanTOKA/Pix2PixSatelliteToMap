@@ -25,18 +25,15 @@ class SatelliteMapDataset(Dataset):
         input_image = image[:, : image.shape[1] // 2, :]
         target_image = image[:, image.shape[1] // 2 :, :]
 
-        transformed = TransformService.basic_transform(
+        basic_transformed = TransformService.basic_transform(
             image_size=self.config.training.image_size
         )(image=input_image, mask=target_image)
 
-        transformed_input_image = TransformService.input_transform()(
-            image=transformed["image"]
-        )
-        transformed_target_image = TransformService.target_transform()(
-            image=transformed["mask"]
+        common_transformed = TransformService.common_transform()(
+            image=np.array(basic_transformed["image"]), mask=np.array(basic_transformed["mask"])
         )
 
-        return transformed_input_image["image"], transformed_target_image["image"]
+        return common_transformed["image"], common_transformed["mask"]
 
 
 if __name__ == "__main__":
